@@ -1,8 +1,18 @@
-# PyTorch Template Project
-PyTorch deep learning project made easy.
-
+# CVDistillation
+## Motivation：
+the application of knowledge distillation to detection tasks is still a challenging task. There are two key points that lead to poor distillation performance for the detection task.
+1. A serious imbalance between foreground and background features can greatly compromise the performance of the detector.
+2. Small goals lack adequate representation of features. (detection of small targets: cascaded detectors/oversampling) , while the teacher network can learn useful feature representations from a large amount of unlabeled data, and then extract deep features from the middle layer through KD, this helps to effectively transfer this knowledge to the student model for a specific task, improving generalization of the dataset.
+3. Pixel-level relational modeling is important but receives less attention. We find that mining the relationship between pixels can reduce the imbalance between foreground and background, and improve the performance of target detector.
+Four. Instance-level relationship modeling is important, but existing work is less uniformly expressed from a structure diagram perspective. The advantage of the graph is that it can enhance the interpretability of the target detection process, retain the precision of the target detector, and be suitable for small target detection scene.
+5. Dense target detection scenario (CROSSKD)6. Learning online and offline distillation
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
+## Initial Idea
+- Using weak supervised learning: it is very difficult and time-consuming to annotate data in target detection task. Therefore, weakly supervised learning methods such as label relaxation and unsupervised target detection can be introduced into the target detection model based on contrast learning. These methods aim to train the model with less labeled information and improve the performance of the model on unlabeled data
+- To pay more attention to local features: in the target detection model based on contrast learning, local features are very important for target classification and detection. You can try to design new local feature extraction methods, mine deep relationships between instances, use VAE for potential coding, or add local attention mechanisms to enhance attention to local features, thus improve the accuracy of the model
+- Combined with multi-modal information: in the task of target detection, image, text and video data types can provide rich information. Therefore, the performance of target detection model based on contrast learning can be enhanced by combining multi-modal information. What I'm thinking about is - using CLIP large models to establish a link between vision and semantics, and semantically annotating a local (instance) on an image to enhance the model's predictive power, especially for small target detection
+- Optimizing contrast loss function: the training of object detection model based on contrast learning mainly depends on contrast loss function. At present, the distillation loss function is L2 loss, which is simple and can be adjusted by adding some regularization parameters
 <!-- code_chunk_output -->
 
 * [PyTorch Template Project](#pytorch-template-project)
@@ -354,25 +364,3 @@ If you need more visualizations, use `add_scalar('tag', data)`, `add_image('tag'
 `add_something()` methods in this template are basically wrappers for those of `tensorboardX.SummaryWriter` and `torch.utils.tensorboard.SummaryWriter` modules. 
 
 **Note**: You don't have to specify current steps, since `WriterTensorboard` class defined at `logger/visualization.py` will track current steps.
-
-## Contribution
-Feel free to contribute any kind of function or enhancement, here the coding style follows PEP8
-
-Code should pass the [Flake8](http://flake8.pycqa.org/en/latest/) check before committing.
-
-## TODOs
-
-- [ ] Multiple optimizers
-- [ ] Support more tensorboard functions
-- [x] Using fixed random seed
-- [x] Support pytorch native tensorboard
-- [x] `tensorboardX` logger support
-- [x] Configurable logging layout, checkpoint naming
-- [x] Iteration-based training (instead of epoch-based)
-- [x] Adding command line option for fine-tuning
-
-## License
-This project is licensed under the MIT License. See  LICENSE for more details
-
-## Acknowledgements
-This project is inspired by the project [Tensorflow-Project-Template](https://github.com/MrGemy95/Tensorflow-Project-Template) by [Mahmoud Gemy](https://github.com/MrGemy95)
