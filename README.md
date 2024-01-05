@@ -15,6 +15,11 @@ Four. Instance-level relationship modeling is important, but existing work is le
 - Optimizing contrast loss function: the training of object detection model based on contrast learning mainly depends on contrast loss function. At present, the distillation loss function is L2 loss, which is simple and can be adjusted by adding some regularization parameters
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
+## Advantages of proposed methods:
+- Robustness
+- Decoupling processing: overall architecture supports end-to-end training
+- Effective visual representation features: Multi-granularity knowledge distillation across foregrounds & backgrounds, with a fusion of structural graphs. Within the proposed components, the model can derive a great range of visual representation.
+
 ## Project Structure & Usage
 * [PyTorch Template Project](#pytorch-template-project)
 	* [Requirements](#requirements)
