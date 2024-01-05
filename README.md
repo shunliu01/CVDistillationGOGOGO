@@ -6,15 +6,16 @@ the application of knowledge distillation to detection tasks is still a challeng
 3. Pixel-level relational modeling is important but receives less attention. We find that mining the relationship between pixels can reduce the imbalance between foreground and background, and improve the performance of target detector.
 Four. Instance-level relationship modeling is important, but existing work is less uniformly expressed from a structure diagram perspective. The advantage of the graph is that it can enhance the interpretability of the target detection process, retain the precision of the target detector, and be suitable for small target detection scene.
 5. Dense target detection scenario (CROSSKD)6. Learning online and offline distillation
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
 
 ## Initial Idea
 - Using weak supervised learning: it is very difficult and time-consuming to annotate data in target detection task. Therefore, weakly supervised learning methods such as label relaxation and unsupervised target detection can be introduced into the target detection model based on contrast learning. These methods aim to train the model with less labeled information and improve the performance of the model on unlabeled data
 - To pay more attention to local features: in the target detection model based on contrast learning, local features are very important for target classification and detection. You can try to design new local feature extraction methods, mine deep relationships between instances, use VAE for potential coding, or add local attention mechanisms to enhance attention to local features, thus improve the accuracy of the model
 - Combined with multi-modal information: in the task of target detection, image, text and video data types can provide rich information. Therefore, the performance of target detection model based on contrast learning can be enhanced by combining multi-modal information. What I'm thinking about is - using CLIP large models to establish a link between vision and semantics, and semantically annotating a local (instance) on an image to enhance the model's predictive power, especially for small target detection
 - Optimizing contrast loss function: the training of object detection model based on contrast learning mainly depends on contrast loss function. At present, the distillation loss function is L2 loss, which is simple and can be adjusted by adding some regularization parameters
-<!-- code_chunk_output -->
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
+## Project Structure & Usage
 * [PyTorch Template Project](#pytorch-template-project)
 	* [Requirements](#requirements)
 	* [Features](#features)
